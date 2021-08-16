@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Matrix operations</title>
+    <link rel="stylesheet" type="text/css" href="css/light.css">
+</head>
+
+<body>
+    <div class="appbar">Elementary Operations on Matrices</div>
+    <!-- The matrix -->
+    <h1>Your matrix</h1>
+    <div id="matrix_placeholder"></div>
+    <h1>Operations</h1>
+    <div class="center-text">
+        <select id="operationselect" class="center-text">
+            <option value="rowmultiplicationdiv">Row multiplication</option>
+            <option value="rowadditiondiv">Row addition</option>
+            <option value="colmultiplicationdiv">Column multiplication</option>
+            <option value="coladditiondiv">Column addition</option>
+        </select>
+    </div>
+    <!-- The containers to change the matrix -->
+    <div id="rowmultiplicationdiv"></div>
+    <!-- INCLUDED SCRIPTS -->
+    <script src="js/operations.js"></script>
+    <script src="js/render.js"></script>
+    <script src="tests/test.js"></script>
+</body>
+
+</html>
