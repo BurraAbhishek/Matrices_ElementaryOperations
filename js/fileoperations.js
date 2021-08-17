@@ -22,10 +22,10 @@ function download_history() {
         "timesaved": time_stamp,
         "history_data": matrix_operations_history
     }
-    var filedata = "var calc_history_file=";
+    var filedata = "var matrixoperations_history_file=";
     filedata += JSON.stringify(y);
     filedata += ";";
-    var filename = "calculation_history_";
+    var filename = "matrix_elementaryoperations_";
     filename += time_stamp;
     filename += ".js";
     savedata(filename, filedata);
@@ -43,8 +43,8 @@ function upload_history() {
             reader.onload = function (event) {
                 var contents = event.target.result;
                 eval(contents);
-                if (typeof (calc_history_file) !== "undefined") {
-                    var filecontents = calc_history_file["history_data"];
+                if (typeof (matrixoperations_history_file) !== "undefined") {
+                    var filecontents = matrixoperations_history_file["history_data"];
                     for (var i = 0; i < filecontents.length; i++) {
                         matrix_operations_history.push(filecontents[i]);
                     }
@@ -74,8 +74,8 @@ function upload_history() {
 
 // Once the file is loaded into the application, load it into the UI
 function loadHistoryFile() {
-    if (typeof (calc_history_file) !== "undefined") {
-        var d = calc_history_file["history_data"];
+    if (typeof (matrixoperations_history_file) !== "undefined") {
+        var d = matrixoperations_history_file["history_data"];
         for (var i = 0; i < d.length; i++) {
             matrix_operations_history.push(d[i]);
         }
