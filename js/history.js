@@ -12,11 +12,12 @@ function undo() {
     return undo_changes(matrix_operations_history, document.getElementById("matrix_placeholder"))
 }
 
-function undo_changes(m, p) {
-    var returned = m.pop();
+function undo_changes(matrix, p) {
+    var returned = matrix.pop();
     p.innerHTML = "";
-    for (var i = 0; i < m.length; i++) {
-        render(m[i]["matrix"], p, 1, 0, m[i]["description"]);
+    for (var i = 0; i < matrix.length; i++) {
+        render(matrix[i]["matrix"], p, 1, 0, matrix[i]["description"]);
     }
+    m = JSON.parse(JSON.stringify(matrix[matrix.length - 1]["matrix"]))
     return returned;
 }

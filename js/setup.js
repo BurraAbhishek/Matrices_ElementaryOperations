@@ -9,6 +9,7 @@ function setInitialMatrix(rowcount, columncount, placeholder) {
             var v = document.createElement("input");
             var id = JSON.stringify(["setup", i, j]);
             v.setAttribute("id", id);
+            v.style.textAlign = "center";
             c.appendChild(v);
             r.appendChild(c);
         }
