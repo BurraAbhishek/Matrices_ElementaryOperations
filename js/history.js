@@ -3,7 +3,7 @@ var matrix_operations_history = [];
 function saveToHistory(matrix, description = "") {
     history_addition = {
         "description": description,
-        "matrix": matrix
+        "matrix": JSON.parse(JSON.stringify(matrix)),
     };
     matrix_operations_history.push(history_addition);
 }
