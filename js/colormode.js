@@ -35,5 +35,11 @@ function color_mode(theme) {
     document.head.appendChild(s);
 }
 
+function chooseColorTheme() {
+    var colormode = "matrixoperationscolormode";
+    var t = document.getElementById("colorthemeselect").value;
+    localStorage.setItem(colormode, t);
+}
+
 // Driver progam
 toggle_colorTheme();
