@@ -6,31 +6,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Matrix operations</title>
     <script src="js/colormode.js"></script>
+    <style>
+        input {
+            width: 85%;
+        }
+
+        #colorthemeselect {
+            font-size: 1em;
+        }
+
+        .fullwidth {
+            width: 96%;
+        }
+    </style>
 </head>
 
 <body>
     <div class="appbar">Elementary Operations on Matrices</div>
-    <!-- The matrix -->
-    <h1>Your matrix</h1>
-    <div id="matrix_placeholder"></div>
-    <h1>Operations</h1>
-    <div class="center-text">
-        <select id="operationselect" class="center-text">
-            <option value="rowmultiplicationdiv">Row multiplication</option>
-            <option value="rowadditiondiv">Row addition</option>
-            <option value="colmultiplicationdiv">Column multiplication</option>
-            <option value="coladditiondiv">Column addition</option>
-            <option value="settingsdiv">Settings</option>
-        </select>
+    <!-- Matrix setup -->
+    <div id="matrix-setup-params">
+        <form action="javascript:matrixParamSetup()" method="POST">
+            <table>
+                <tr>
+                    <th>
+                        <label for="rowcount">Number of Rows: </label>
+                    </th>
+                    <td>
+                        <input name="rowcount" id="rowcount" type="number" min=1 value=3>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="colcount">Number of Columns: </label>
+                    </th>
+                    <td>
+                        <input name="colcount" id="colcount" type="number" min=1 value=3>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" class="submitbtn" value="GO">
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
-    <!-- The containers to change the matrix -->
-    <div id="rowmultiplicationdiv"></div>
+    <!-- Initialize the matrix -->
+    <div id="matrix-initialize"></div>
+    <!-- The matrix -->
+    <div id="matrix-main">
+        <h1>Your matrix</h1>
+        <div id="matrix_placeholder"></div>
+        <h1>Operations</h1>
+        <div class="center-text">
+            <select id="operationselect" class="center-text" onchange="javascript:toggleAppOptions()">
+                <option value="optionsdiv">More options</option>
+                <option value="rowmultiplicationdiv">Row multiplication</option>
+                <option value="rowadditiondiv">Row addition</option>
+                <option value="colmultiplicationdiv">Column multiplication</option>
+                <option value="coladditiondiv">Column addition</option>
+            </select>
+        </div>
+        <!-- The containers to change the matrix -->
+        <div id="optionsdiv">
+            <h1>Options</h1>
+            <table>
+                <tr>
+                    <td>
+                        <label for="colorthemeselect">Select Theme: </label>
+                        <select name="colorthemeselect" id="colorthemeselect" onclick="javascript:chooseColorTheme()">
+                            <option value="Light">Light Theme</option>
+                            <option value="Dark">Dark Theme</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="submitbtn fullwidth" onclick="javascript:download_history()">Save work to
+                            device</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="submitbtn fullwidth" onclick="javascript:upload_history()">Upload work from
+                            device</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="rowmultiplicationdiv">
+            <h1>Row multiplication</h1>
+        </div>
+        <div id="rowadditiondiv">
+            <h1>Row addition</h1>
+        </div>
+        <div id="colmultiplicationdiv">
+            <h1>Column multiplication</h1>
+        </div>
+        <div id="coladditiondiv">
+            <h1>Column addition</h1>
+        </div>
+    </div>
     <!-- INCLUDED SCRIPTS -->
+    <script src="js/setup.js"></script>
+    <script src="js/navigations.js"></script>
     <script src="js/history.js"></script>
     <script src="js/fileoperations.js"></script>
     <script src="js/operations.js"></script>
     <script src="js/render.js"></script>
-    <script src="tests/test.js"></script>
+    <!-- <script src="tests/test.js"></script> -->
 </body>
 
 </html>
