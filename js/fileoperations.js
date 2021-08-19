@@ -48,7 +48,7 @@ function upload_history() {
                     for (var i = 0; i < filecontents.length; i++) {
                         matrix_operations_history.push(filecontents[i]);
                     }
-                    get_operations_history();
+                    get_operations_history(matrix_operations_history);
                 }
             }
             reader.readAsText(file);
@@ -83,8 +83,10 @@ function loadHistoryFile() {
     }
 }
 
-function get_operations_history(m) {
-    for (var i = 0; i < m.length; i++) {
-        render(m[i]["matrix"], p, 1, 0, m[i]["description"]);
+function get_operations_history(matrix) {
+    var p = document.getElementById("matrix_placeholder");
+    for (var i = 0; i < matrix.length; i++) {
+        render(matrix[i]["matrix"], p, 1, 0, matrix[i]["description"]);
     }
+    m = JSON.parse(JSON.stringify(matrix[matrix.length - 1]["matrix"]));
 }
