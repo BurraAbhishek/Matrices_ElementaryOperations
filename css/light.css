@@ -55,7 +55,7 @@ td {
     background-color: #ff0000;
     color: #99ff99;
     border: none;
-    width: 20%;
+    width: fit-content;
     height: 5%;
     font-size: 1.2em;
     font-weight: bold;
