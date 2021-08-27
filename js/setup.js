@@ -1,7 +1,7 @@
 function setInitialMatrix(rowcount, columncount, placeholder) {
     placeholder.innerHTML = "";
     var t = document.createElement("table");
-    t.setAttribute("id", "matrix_setup_table")
+    t.setAttribute("id", "matrix_setup_table");
     for (var i = 0; i < rowcount; i++) {
         var r = document.createElement("tr");
         for (var j = 0; j < columncount; j++) {
@@ -20,7 +20,9 @@ function setInitialMatrix(rowcount, columncount, placeholder) {
     c.colSpan = columncount;
     var b = document.createElement("button");
     b.setAttribute("class", "submitbtn");
-    b.onclick = function () { m = matrixSetup(rowcount, columncount) };
+    b.onclick = function () {
+        m = matrixSetup(rowcount, columncount);
+    };
     var s = document.createTextNode("GO");
     b.appendChild(s);
     c.appendChild(b);
@@ -48,6 +50,12 @@ function matrixSetup(r, c) {
         }
         m.push(rmatrix);
     }
-    render(m, document.getElementById("matrix_placeholder"), 1, 1, "Given matrix");
+    render(
+        m,
+        document.getElementById("matrix_placeholder"),
+        1,
+        1,
+        "Given matrix"
+    );
     return m;
 }

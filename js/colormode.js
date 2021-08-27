@@ -1,10 +1,11 @@
 function toggle_colorTheme() {
     var colormode = "matrixoperationscolormode";
     var d = new Date();
-    if (typeof (Storage) !== "undefined") {
+    if (typeof Storage !== "undefined") {
         // Check if setting is already enabled in local storage.
-        if (typeof (localStorage[colormode]) === "undefined") {
-            // Initially toggle light and dark mode based on time. Light mode between 6 A.M. and 6 P.M.
+        if (typeof localStorage[colormode] === "undefined") {
+            // Initially toggle light and dark mode based on time.
+            // Light mode between 6 A.M. and 6 P.M.
             if (d.getHours() >= 6 && d.getHours() < 18) {
                 localStorage.setItem(colormode, "Light");
             } else {

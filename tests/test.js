@@ -3,8 +3,8 @@
 var m = [
     [1, 0, 0],
     [0, 1, 0],
-    [0, 0, 1]
-]
+    [0, 0, 1],
+];
 
 render(m, document.getElementById("matrix_placeholder"), 1, 1, "Given");
 // Uncomment to use these.
@@ -24,4 +24,3 @@ multiplyRow(m, 0, 1/2);
  * 1 1 0
  * 1 0 1
  *************/
-

@@ -1,236 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Matrix operations</title>
+        <script src="js/colormode.js"></script>
+        <style>
+            input {
+                width: 85%;
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Matrix operations</title>
-    <script src="js/colormode.js"></script>
-    <style>
-        input {
-            width: 85%;
-        }
+            #colorthemeselect {
+                font-size: 1em;
+            }
 
-        #colorthemeselect {
-            font-size: 1em;
-        }
+            .sizedtext {
+                font-size: 1.5em;
+            }
 
-        .sizedtext {
-            font-size: 1.5em;
-        }
+            .fullwidth {
+                width: 96%;
+            }
+        </style>
+    </head>
 
-        .fullwidth {
-            width: 96%;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="appbar">Elementary Operations on Matrices</div>
-    <!-- Matrix setup -->
-    <div id="matrix-setup-params">
-        <form action="javascript:matrixParamSetup()" method="POST">
-            <table>
-                <tr>
-                    <th>
-                        <label for="rowcount">Number of Rows: </label>
-                    </th>
-                    <td>
-                        <input name="rowcount" id="rowcount" type="number" min=1 value=3>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="colcount">Number of Columns: </label>
-                    </th>
-                    <td>
-                        <input name="colcount" id="colcount" type="number" min=1 value=3>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" class="submitbtn" value="GO">
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
-    <!-- Initialize the matrix -->
-    <div id="matrix-initialize"></div>
-    <!-- The matrix -->
-    <div id="matrix-main">
-        <h1>Your matrix</h1>
-        <div id="matrix_placeholder"></div>
-        <h1>Operations</h1>
-        <div class="center-text">
-            <span class="sizedtext">
-                <label for="operationselect">Select an operation: </label>
-            </span>
-            <select name="operationselect" id="operationselect" class="center-text" onchange="javascript:toggleAppOptions()">
-                <option value="optionsdiv">More options</option>
-                <option value="rowmultiplicationdiv">Row multiplication</option>
-                <option value="rowadditiondiv">Row addition</option>
-                <option value="colmultiplicationdiv">Column multiplication</option>
-                <option value="coladditiondiv">Column addition</option>
-            </select>
+    <body>
+        <div class="appbar">Elementary Operations on Matrices</div>
+        <!-- Matrix setup -->
+        <div id="matrix-setup-params">
+            <form action="javascript:matrixParamSetup()" method="POST">
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rowcount">Number of Rows: </label>
+                        </th>
+                        <td>
+                            <input
+                                name="rowcount"
+                                id="rowcount"
+                                type="number"
+                                min="1"
+                                value="3"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="colcount">Number of Columns: </label>
+                        </th>
+                        <td>
+                            <input
+                                name="colcount"
+                                id="colcount"
+                                type="number"
+                                min="1"
+                                value="3"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="submitbtn" value="GO" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
-        <!-- The containers to change the matrix -->
-        <div id="optionsdiv">
-            <h1>Options</h1>
-            <table>
-                <tr>
-                    <td>
-                        <label for="colorthemeselect">Select Theme: </label>
-                        <select name="colorthemeselect" id="colorthemeselect" onclick="javascript:chooseColorTheme()">
-                            <option value="Light">Light Theme</option>
-                            <option value="Dark">Dark Theme</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="submitbtn fullwidth" onclick="javascript:download_history()">Save work
-                            to device</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button class="submitbtn fullwidth" onclick="javascript:upload_history()">Upload work
-                            from device</button>
-                    </td>
-                </tr>
-            </table>
+        <!-- Initialize the matrix -->
+        <div id="matrix-initialize"></div>
+        <!-- The matrix -->
+        <div id="matrix-main">
+            <h1>Your matrix</h1>
+            <div id="matrix_placeholder"></div>
+            <h1>Operations</h1>
+            <div class="center-text">
+                <span class="sizedtext">
+                    <label for="operationselect">Select an operation: </label>
+                </span>
+                <select
+                    name="operationselect"
+                    id="operationselect"
+                    class="center-text"
+                    onchange="javascript:toggleAppOptions()"
+                >
+                    <option value="optionsdiv">More options</option>
+                    <option value="rowmultiplicationdiv">
+                        Row multiplication
+                    </option>
+                    <option value="rowadditiondiv">Row addition</option>
+                    <option value="colmultiplicationdiv">
+                        Column multiplication
+                    </option>
+                    <option value="coladditiondiv">Column addition</option>
+                </select>
+            </div>
+            <!-- The containers to change the matrix -->
+            <div id="optionsdiv">
+                <h1>Options</h1>
+                <table>
+                    <tr>
+                        <td>
+                            <label for="colorthemeselect">Select Theme: </label>
+                            <select
+                                name="colorthemeselect"
+                                id="colorthemeselect"
+                                onclick="javascript:chooseColorTheme()"
+                            >
+                                <option value="Light">Light Theme</option>
+                                <option value="Dark">Dark Theme</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:download_history()"
+                            >
+                                Save work todevice
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:upload_history()"
+                            >
+                                Upload work fromdevice
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="rowmultiplicationdiv">
+                <h1>Row multiplication</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rowmultiplicationdiv_row"
+                                >Row number: (First row is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="rowmultiplicationdiv_row"
+                                id="rowmultiplicationdiv_row"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="rowmultiplicationdiv_factor"
+                                >Multiplication Factor</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="rowmultiplicationdiv_factor"
+                                id="rowmultiplicationdiv_factor"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:renderMultiplyRow()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="rowadditiondiv">
+                <h1>Row addition</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rowadditiondiv_row1"
+                                >Row number of target: (First row is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="rowadditiondiv_row1"
+                                id="rowadditiondiv_row1"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="rowadditiondiv_row2"
+                                >Row number of added row:
+                            </label>
+                        </th>
+                        <td>
+                            <input
+                                name="rowadditiondiv_row2"
+                                id="rowadditiondiv_row2"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="rowadditiondiv_factor"
+                                >Multiplication Factor of added row:
+                            </label>
+                        </th>
+                        <td>
+                            <input
+                                name="rowadditiondiv_factor"
+                                id="rowadditiondiv_factor"
+                                value="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:renderAddRows()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="colmultiplicationdiv">
+                <h1>Column multiplication</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="colmultiplicationdiv_col"
+                                >Column number: (First column is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="colmultiplicationdiv_col"
+                                id="colmultiplicationdiv_col"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="colmultiplicationdiv_factor"
+                                >Multiplication Factor</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="colmultiplicationdiv_factor"
+                                id="colmultiplicationdiv_factor"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:renderMultiplyColumn()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="coladditiondiv">
+                <h1>Column addition</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="coladditiondiv_col1"
+                                >Column number of target: (Starts: 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="coladditiondiv_col1"
+                                id="coladditiondiv_col1"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="coladditiondiv_col2"
+                                >Column number of added column:
+                            </label>
+                        </th>
+                        <td>
+                            <input
+                                name="coladditiondiv_col2"
+                                id="coladditiondiv_col2"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="coladditiondiv_factor"
+                                >Multiplication Factor of added column:
+                            </label>
+                        </th>
+                        <td>
+                            <input
+                                name="coladditiondiv_factor"
+                                id="coladditiondiv_factor"
+                                value="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn fullwidth"
+                                onclick="javascript:renderAddColumns()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
-        <div id="rowmultiplicationdiv">
-            <h1>Row multiplication</h1>
-            <table>
-                <tr>
-                    <th>
-                        <label for="rowmultiplicationdiv_row">Row number: (First row is 1)</label>
-                    </th>
-                    <td>
-                        <input name="rowmultiplicationdiv_row" id="rowmultiplicationdiv_row" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="rowmultiplicationdiv_factor">Multiplication Factor</label>
-                    </th>
-                    <td>
-                        <input name="rowmultiplicationdiv_factor" id="rowmultiplicationdiv_factor">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan=2>
-                        <button class="submitbtn fullwidth" onclick="javascript:renderMultiplyRow()">GO</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="rowadditiondiv">
-            <h1>Row addition</h1>
-            <table>
-                <tr>
-                    <th>
-                        <label for="rowadditiondiv_row1">Row number of target: (First row is 1)</label>
-                    </th>
-                    <td>
-                        <input name="rowadditiondiv_row1" id="rowadditiondiv_row1" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="rowadditiondiv_row2">Row number of added row: </label>
-                    </th>
-                    <td>
-                        <input name="rowadditiondiv_row2" id="rowadditiondiv_row2" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="rowadditiondiv_factor">Multiplication Factor of added row: </label>
-                    </th>
-                    <td>
-                        <input name="rowadditiondiv_factor" id="rowadditiondiv_factor" value=1>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan=2>
-                        <button class="submitbtn fullwidth" onclick="javascript:renderAddRows()">GO</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="colmultiplicationdiv">
-            <h1>Column multiplication</h1>
-            <table>
-                <tr>
-                    <th>
-                        <label for="colmultiplicationdiv_col">Column number: (First column is 1)</label>
-                    </th>
-                    <td>
-                        <input name="colmultiplicationdiv_col" id="colmultiplicationdiv_col" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="colmultiplicationdiv_factor">Multiplication Factor</label>
-                    </th>
-                    <td>
-                        <input name="colmultiplicationdiv_factor" id="colmultiplicationdiv_factor">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan=2>
-                        <button class="submitbtn fullwidth" onclick="javascript:renderMultiplyColumn()">GO</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="coladditiondiv">
-            <h1>Column addition</h1>
-            <table>
-                <tr>
-                    <th>
-                        <label for="coladditiondiv_col1">Column number of target: (Starts: 1)</label>
-                    </th>
-                    <td>
-                        <input name="coladditiondiv_col1" id="coladditiondiv_col1" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="coladditiondiv_col2">Column number of added column: </label>
-                    </th>
-                    <td>
-                        <input name="coladditiondiv_col2" id="coladditiondiv_col2" type="number" min=1>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        <label for="coladditiondiv_factor">Multiplication Factor of added column: </label>
-                    </th>
-                    <td>
-                        <input name="coladditiondiv_factor" id="coladditiondiv_factor" value=1>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan=2>
-                        <button class="submitbtn fullwidth" onclick="javascript:renderAddColumns()">GO</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <!-- INCLUDED SCRIPTS -->
-    <script src="js/setup.js"></script>
-    <script src="js/navigations.js"></script>
-    <script src="js/history.js"></script>
-    <script src="js/fileoperations.js"></script>
-    <script src="js/operations.js"></script>
-    <script src="js/render.js"></script>
-    <script src="js/renderoperations.js"></script>
-    <!-- <script src="tests/test.js"></script> -->
-</body>
-
+        <!-- INCLUDED SCRIPTS -->
+        <script src="js/setup.js"></script>
+        <script src="js/navigations.js"></script>
+        <script src="js/history.js"></script>
+        <script src="js/fileoperations.js"></script>
+        <script src="js/operations.js"></script>
+        <script src="js/render.js"></script>
+        <script src="js/renderoperations.js"></script>
+        <!-- <script src="tests/test.js"></script> -->
+    </body>
 </html>
