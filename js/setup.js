@@ -38,6 +38,29 @@ function matrixParamSetup() {
     setInitialMatrix(r, c, p);
 }
 
+function toNumber(n) {
+    m = 0;
+    if (!isNaN(Number(n))) {
+        m = Number(n);
+    } else {
+        if (n.indexOf("/") > -1) {
+            a = n.split("/");
+            if (a[1] == "0" || a[1] == "" || a[0] == "") {
+                m = 0;
+            }
+            try {
+                m = Number(Number(a[0]) / Number(a[1]));
+            } catch (er) {
+                m = 0;
+            }
+            if (isNaN(m)) {
+                m = 0;
+            }
+        }
+    }
+    return m;
+}
+
 function matrixSetup(r, c) {
     var m = [];
     document.getElementById("matrix-setup-params").style.display = "none";
@@ -46,7 +69,7 @@ function matrixSetup(r, c) {
         var rmatrix = [];
         for (var j = 0; j < c; j++) {
             var id = JSON.stringify(["setup", i, j]);
-            rmatrix.push(Number(document.getElementById(id).value));
+            rmatrix.push(toNumber(document.getElementById(id).value));
         }
         m.push(rmatrix);
     }
