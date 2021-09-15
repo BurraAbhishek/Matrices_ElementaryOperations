@@ -83,3 +83,37 @@ function multiplyColumn(matrix, column, factor) {
     }
     render(matrix, document.getElementById("matrix_placeholder"), 1, 1, title);
 }
+
+// (row1, row2) -> (row2, row1)
+function swapRows(matrix, row1, row2) {
+    temp = [];
+    for (var i = 0; i < matrix.length; i++) {
+        temp[i] = matrix[row1][i];
+    }
+    for (var i = 0; i < matrix.length; i++) {
+        matrix[row1][i] = matrix[row2][i];
+    }
+    for (var i = 0; i < matrix.length; i++) {
+        matrix[row2][i] = temp[i];
+    }
+    title = "R" + (row1 + 1).toString();
+    title += " swapped with R" + (row2 + 1).toString();
+    render(matrix, document.getElementById("matrix_placeholder"), 1, 1, title);
+}
+
+// (column1, column2) -> (column2, column1)
+function swapColumns(matrix, column1, column2) {
+    temp = [];
+    for (var i = 0; i < matrix[0].length; i++) {
+        temp[i] = matrix[i][column1];
+    }
+    for (var i = 0; i < matrix[0].length; i++) {
+        matrix[i][column1] = matrix[i][column2];
+    }
+    for (var i = 0; i < matrix[0].length; i++) {
+        matrix[i][column2] = temp[i];
+    }
+    title = "C" + (column1 + 1).toString();
+    title += " swapped with C" + (column2 + 1).toString();
+    render(matrix, document.getElementById("matrix_placeholder"), 1, 1, title);
+}

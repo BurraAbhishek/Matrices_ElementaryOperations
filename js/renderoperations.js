@@ -28,6 +28,16 @@ function renderAddRows() {
     }
 }
 
+function renderSwapRows() {
+    var row1 = Number(document.getElementById("rowswapdiv_row1").value) - 1;
+    var row2 = Number(document.getElementById("rowswapdiv_row2").value) - 1;
+    try {
+        swapRows(m, row1, row2);
+    } catch (e) {
+        // Nothing to see here, move along.
+    }
+}
+
 function renderMultiplyColumn() {
     var column =
         Number(document.getElementById("colmultiplicationdiv_col").value) - 1;
@@ -55,6 +65,16 @@ function renderAddColumns() {
         if (!isNaN(factor)) {
             addColumns(m, column1, column2, factor);
         }
+    } catch (e) {
+        // Nothing to see here, move along.
+    }
+}
+
+function renderSwapColumns() {
+    var column1 = Number(document.getElementById("colswapdiv_col1").value) - 1;
+    var column2 = Number(document.getElementById("colswapdiv_col2").value) - 1;
+    try {
+        swapColumns(m, column1, column2);
     } catch (e) {
         // Nothing to see here, move along.
     }

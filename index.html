@@ -80,14 +80,17 @@
                     onchange="javascript:toggleAppOptions()"
                 >
                     <option value="optionsdiv">More options</option>
+                    <option value="undodiv">Undo options</option>
                     <option value="rowmultiplicationdiv">
                         Row multiplication
                     </option>
                     <option value="rowadditiondiv">Row addition</option>
+                    <option value="rowswapdiv">Row swapping</option>
                     <option value="colmultiplicationdiv">
                         Column multiplication
                     </option>
                     <option value="coladditiondiv">Column addition</option>
+                    <option value="colswapdiv">Column swapping</option>
                 </select>
             </div>
             <!-- The containers to change the matrix -->
@@ -124,6 +127,21 @@
                                 onclick="javascript:upload_history()"
                             >
                                 Upload work from device
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="undodiv">
+                <h1>Undo the most recent operation</h1>
+                <table>
+                    <tr>
+                        <td>
+                            <button
+                                class="submitbtn"
+                                onclick="javascript:undo()"
+                            >
+                                UNDO
                             </button>
                         </td>
                     </tr>
@@ -231,6 +249,51 @@
                     </tr>
                 </table>
             </div>
+            <div id="rowswapdiv">
+                <h1>Row Swapping</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="rowswapdiv_row1"
+                                >Row1 number: (First row is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="rowswapdiv_row1"
+                                id="rowswapdiv_row1"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="rowswapdiv_row2"
+                                >Row2 number: (First row is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="rowswapdiv_row2"
+                                id="rowswapdiv_row2"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn"
+                                onclick="javascript:renderSwapRows()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
             <div id="colmultiplicationdiv">
                 <h1>Column multiplication</h1>
                 <table>
@@ -326,6 +389,51 @@
                             <button
                                 class="submitbtn"
                                 onclick="javascript:renderAddColumns()"
+                            >
+                                GO
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="colswapdiv">
+                <h1>Column Swapping</h1>
+                <table>
+                    <tr>
+                        <th>
+                            <label for="colswapdiv_col1"
+                                >Column1 number: (First column is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="colswapdiv_col1"
+                                id="colswapdiv_col1"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="colswapdiv_col2"
+                                >Column2 number: (First column is 1)</label
+                            >
+                        </th>
+                        <td>
+                            <input
+                                name="colswapdiv_col2"
+                                id="colswapdiv_col2"
+                                type="number"
+                                min="1"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button
+                                class="submitbtn"
+                                onclick="javascript:renderSwapColumns()"
                             >
                                 GO
                             </button>

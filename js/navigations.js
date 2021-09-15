@@ -1,10 +1,13 @@
 function toggleAppOptions() {
     var options = [
         "optionsdiv",
+        "undodiv",
         "rowmultiplicationdiv",
         "rowadditiondiv",
+        "rowswapdiv",
         "colmultiplicationdiv",
         "coladditiondiv",
+        "colswapdiv",
     ];
     var chosen = document.getElementById("operationselect").value;
     for (var i = 0; i < options.length; i++) {
